@@ -11,7 +11,7 @@
 #                          park for selling the tickets.          #
 #                                                                 #
 ##################### Program Begins ##############################
-
+'''
 #Title of Program
 print()
 print("{0:^60s}".format("=-"*20))
@@ -36,9 +36,20 @@ print("{0:^58s}".format(style))
 print()
 
 print()
-
+'''
 #Opening up the file to DECODE
-fileToDecode= open("encoded_2.txt","r")
+fileToDecode= open(fileName,"r")
+forInnerLoop = ""
+sentence=""
 for each in fileToDecode:
-    print(each.rsplit())
+    forInnerLoop = each.rstrip()
+    for a in forInnerLoop:
+        if not(a==" "):
+            decodedchartoASCII = ord(a)
+            realValueForASCII = decodedchartoASCII + 2
+            sentence+= chr(realValueForASCII)
+        else:
+            sentence+=" "
+    print(sentence)
+    sentence=""
 fileToDecode.close()
